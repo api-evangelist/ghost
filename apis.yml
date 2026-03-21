@@ -1,0 +1,138 @@
+aid: ghost
+url: https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml
+apis:
+  - aid: ghost:content-api
+    name: Ghost Content API
+    tags:
+      - Content Management
+      - Publishing
+      - Headless CMS
+      - Posts
+      - Pages
+      - Tags
+      - Authors
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.example.com
+    humanURL: https://ghost.org/docs/content-api/
+    properties:
+      - url: https://ghost.org/docs/content-api/
+        type: Documentation
+      - url: openapi/ghost-content-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Ghost Content API is a RESTful, read-only API that delivers published
+      content from a Ghost site to any client. It provides access to posts,
+      pages, tags, authors, tiers, and settings resources. Access is controlled
+      via a Content API key, and all responses are returned in JSON format. The
+      API supports browse and read request types with powerful filtering using
+      the NQL query language, making it ideal for building custom front-ends,
+      static sites, mobile apps, and other content-driven applications powered
+      by Ghost as a headless CMS.
+  - aid: ghost:admin-api
+    name: Ghost Admin API
+    tags:
+      - Content Management
+      - Publishing
+      - Administration
+      - Members
+      - Newsletters
+      - Tiers
+      - Offers
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.example.com
+    humanURL: https://ghost.org/docs/admin-api/
+    properties:
+      - url: https://ghost.org/docs/admin-api/
+        type: Documentation
+      - url: openapi/ghost-admin-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      The Ghost Admin API provides full read and write access to all content and
+      configuration within a Ghost publication. It enables developers to create,
+      update, and delete posts, pages, tags, members, tiers, newsletters, and
+      offers programmatically. Authentication is handled via JSON Web Tokens
+      generated from an Admin API key, integration tokens, or staff access
+      tokens. The Admin API supports everything the Ghost Admin interface can do
+      and more, making it suitable for building custom publishing workflows,
+      content automation, member management systems, and advanced integrations.
+  - aid: ghost:webhooks
+    name: Ghost Webhooks
+    tags:
+      - Webhooks
+      - Events
+      - Notifications
+      - Automation
+      - Integrations
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.example.com
+    humanURL: https://ghost.org/docs/webhooks/
+    properties:
+      - url: https://ghost.org/docs/webhooks/
+        type: Documentation
+      - url: asyncapi/ghost-webhooks-asyncapi.yml
+        type: AsyncAPI
+    description: >-
+      Ghost Webhooks allow developers to receive real-time HTTP notifications
+      when specific events occur within a Ghost publication, such as publishing
+      a new post, updating a page, or gaining a new member. Webhooks can be
+      configured through the Ghost Admin interface under custom integrations or
+      created programmatically via the Admin API. By combining webhooks with the
+      Content and Admin APIs, developers can build event-driven integrations
+      that automate content distribution, trigger external workflows, and
+      respond immediately to changes in publication activity without polling.
+  - aid: ghost:content-api-javascript-client
+    name: Ghost Content API JavaScript Client
+    tags:
+      - JavaScript
+      - SDK
+      - Client Library
+      - Content Management
+      - Node.js
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.example.com
+    humanURL: https://ghost.org/docs/content-api/javascript/
+    properties:
+      - url: https://ghost.org/docs/content-api/javascript/
+        type: Documentation
+    description: >-
+      The Ghost Content API JavaScript Client is an official promise-based
+      JavaScript library published as @tryghost/content-api on npm. It
+      abstracts the complexity of authenticating and interacting with the Ghost
+      Content API, providing a clean interface for fetching posts, pages, tags,
+      authors, and settings. The library works in both client-side and
+      server-side JavaScript environments and supports the full NQL filtering
+      syntax. It is commonly used to build custom front-ends, JAMstack sites
+      with frameworks like Gatsby or Next.js, and other applications that
+      consume Ghost content.
+  - aid: ghost:themes-api
+    name: Ghost Themes API
+    tags:
+      - Themes
+      - Handlebars
+      - Templates
+      - Frontend
+      - Customization
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    baseURL: https://api.example.com
+    humanURL: https://ghost.org/docs/themes/
+    properties:
+      - url: https://ghost.org/docs/themes/
+        type: Documentation
+    description: >-
+      The Ghost Themes API provides a Handlebars-based templating system for
+      building custom front-end themes for Ghost publications. It includes a
+      comprehensive set of helpers including data helpers for fetching content,
+      functional helpers for logic and formatting, and utility helpers for
+      common tasks. Themes have access to all Ghost content through template
+      variables and the get helper, which queries the Content API internally.
+      The Themes API supports custom templates, partials, asset management, and
+      member-aware content gating, giving developers full control over the
+      presentation and user experience of a Ghost-powered site.
+common:
+  - type: JSON-LD
+    url: json-ld/ghost-context.jsonld
+  - type: JSONSchema
+    url: json-schema/ghost-post-schema.json
+  - type: JSONSchema
+    url: json-schema/ghost-member-schema.json
+modified: '2026-03-20'
