@@ -37,27 +37,15 @@ servers:
         default: localhost:2368
         description: Your Ghost instance domain and port
 tags:
-  - name: Posts
+  - name: Images
     description: >-
-      Create, read, update, and delete posts. Posts are the primary content
-      resource in Ghost and support rich content via the Lexical editor format.
-  - name: Pages
-    description: >-
-      Create, read, update, and delete pages. Pages share the same structure as
-      posts but are used for static content.
-  - name: Tags
-    description: >-
-      Create, read, update, and delete tags for organizing and categorizing
-      content.
+      Upload images to the Ghost publication for use in posts, pages, and
+      settings.
   - name: Members
     description: >-
       Manage publication members including creating, reading, updating, and
       deleting member records. Members are people who have signed up for the
       publication.
-  - name: Tiers
-    description: >-
-      Manage membership tiers including creating, reading, and updating tier
-      configurations with pricing and benefits.
   - name: Newsletters
     description: >-
       Manage email newsletters that members can subscribe to. Each newsletter
@@ -66,6 +54,25 @@ tags:
     description: >-
       Manage promotional offers for paid membership tiers, including discounts
       and trial periods.
+  - name: Pages
+    description: >-
+      Create, read, update, and delete pages. Pages share the same structure as
+      posts but are used for static content.
+  - name: Posts
+    description: >-
+      Create, read, update, and delete posts. Posts are the primary content
+      resource in Ghost and support rich content via the Lexical editor format.
+  - name: Site
+    description: >-
+      Read basic information about the Ghost site.
+  - name: Themes
+    description: >-
+      Upload, activate, and manage themes that control the front-end appearance
+      of the Ghost publication.
+  - name: Tiers
+    description: >-
+      Manage membership tiers including creating, reading, and updating tier
+      configurations with pricing and benefits.
   - name: Users
     description: >-
       Read staff user accounts for the Ghost publication.
@@ -73,17 +80,6 @@ tags:
     description: >-
       Create, update, and delete webhooks that send HTTP POST notifications when
       events occur within the publication.
-  - name: Images
-    description: >-
-      Upload images to the Ghost publication for use in posts, pages, and
-      settings.
-  - name: Themes
-    description: >-
-      Upload, activate, and manage themes that control the front-end appearance
-      of the Ghost publication.
-  - name: Site
-    description: >-
-      Read basic information about the Ghost site.
 security:
   - adminApiToken: []
 paths:
@@ -433,8 +429,7 @@ paths:
       summary: Browse tags
       description: >-
         Retrieve a paginated list of all tags, including internal tags.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/fields'
         - $ref: '#/components/parameters/filter'
@@ -463,8 +458,7 @@ paths:
       description: >-
         Create a new tag. The name field is required. Tags with names starting
         with a hash character are treated as internal tags.
-      tags:
-        - Tags
+      tags: []
       requestBody:
         required: true
         content:
@@ -502,8 +496,7 @@ paths:
       summary: Read a tag by ID
       description: >-
         Retrieve a single tag by its unique identifier.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/resourceId'
         - $ref: '#/components/parameters/fields'
@@ -530,8 +523,7 @@ paths:
       summary: Update a tag
       description: >-
         Update an existing tag by its unique identifier.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/resourceId'
       requestBody:
@@ -572,8 +564,7 @@ paths:
       summary: Delete a tag
       description: >-
         Permanently delete a tag by its unique identifier.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/resourceId'
       responses:

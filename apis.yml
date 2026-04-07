@@ -1,19 +1,16 @@
 aid: ghost
-url: 
-  https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml
 apis:
   - aid: ghost:content-api
     name: Ghost Content API
     tags:
-      - Content Management
-      - Publishing
-      - Headless CMS
-      - Posts
-      - Pages
-      - Tags
       - Authors
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Content Management
+      - Headless CMS
+      - Pages
+      - Posts
+      - Publishing
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://ghost.org/docs/content-api/
     properties:
@@ -29,15 +26,14 @@ apis:
   - aid: ghost:admin-api
     name: Ghost Admin API
     tags:
-      - Content Management
-      - Publishing
       - Administration
+      - Content Management
       - Members
       - Newsletters
-      - Tiers
       - Offers
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Publishing
+      - Tiers
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://ghost.org/docs/admin-api/
     properties:
@@ -54,13 +50,12 @@ apis:
   - aid: ghost:webhooks
     name: Ghost Webhooks
     tags:
-      - Webhooks
-      - Events
-      - Notifications
       - Automation
+      - Events
       - Integrations
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Notifications
+      - Webhooks
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://ghost.org/docs/webhooks/
     properties:
@@ -77,13 +72,12 @@ apis:
   - aid: ghost:content-api-javascript-client
     name: Ghost Content API JavaScript Client
     tags:
-      - JavaScript
-      - SDK
       - Client Library
       - Content Management
+      - JavaScript
       - Node.js
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - SDK
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://ghost.org/docs/content-api/javascript/
     properties:
@@ -99,13 +93,12 @@ apis:
   - aid: ghost:themes-api
     name: Ghost Themes API
     tags:
-      - Themes
+      - Customization
+      - Frontend
       - Handlebars
       - Templates
-      - Frontend
-      - Customization
-    image: 
-      https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+      - Themes
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     baseURL: https://api.example.com
     humanURL: https://ghost.org/docs/themes/
     properties:

@@ -37,31 +37,27 @@ servers:
         default: localhost:2368
         description: Your Ghost instance domain and port
 tags:
+  - name: Authors
+    description: >-
+      Authors represent the staff users who create content in a Ghost
+      publication.
+  - name: Pages
+    description: >-
+      Pages are static content resources in Ghost, similar to posts but used for
+      standalone pages like About or Contact.
   - name: Posts
     description: >-
       Posts are the primary content resource in Ghost. Browse and read published
       posts with full support for filtering, including by tag, author, and
       featured status.
-  - name: Pages
-    description: >-
-      Pages are static content resources in Ghost, similar to posts but used for
-      standalone pages like About or Contact.
-  - name: Tags
-    description: >-
-      Tags are used to organize and categorize content in Ghost. Both public and
-      internal tags are supported.
-  - name: Authors
-    description: >-
-      Authors represent the staff users who create content in a Ghost
-      publication.
-  - name: Tiers
-    description: >-
-      Tiers represent the membership levels available for a Ghost publication,
-      including free and paid options.
   - name: Settings
     description: >-
       Settings provide access to global publication settings including title,
       description, navigation, and other configuration values.
+  - name: Tiers
+    description: >-
+      Tiers represent the membership levels available for a Ghost publication,
+      including free and paid options.
 security:
   - contentApiKey: []
 paths:
@@ -268,8 +264,7 @@ paths:
         Retrieve a paginated list of tags used to organize content. Supports
         filtering, ordering, and including the count of posts associated with
         each tag.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/includeTagRelations'
         - $ref: '#/components/parameters/fields'
@@ -299,8 +294,7 @@ paths:
       summary: Read a tag by ID
       description: >-
         Retrieve a single tag by its unique identifier.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/resourceId'
         - $ref: '#/components/parameters/includeTagRelations'
@@ -329,8 +323,7 @@ paths:
       summary: Read a tag by slug
       description: >-
         Retrieve a single tag by its URL slug.
-      tags:
-        - Tags
+      tags: []
       parameters:
         - $ref: '#/components/parameters/resourceSlug'
         - $ref: '#/components/parameters/includeTagRelations'
