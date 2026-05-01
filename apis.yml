@@ -118,7 +118,24 @@ common:
     url: json-schema/ghost-post-schema.json
   - type: JSONSchema
     url: json-schema/ghost-member-schema.json
-modified: '2026-03-20'
+name: Ghost
+type: Contract
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+created: '2025-03-01'
+modified: '2026-04-28'
+position: Consumer
+specificationVersion: '0.19'
+tags:
+  - Content Management
+  - Publishing
+  - Headless CMS
+  - Blogging
+  - Newsletters
+  - Memberships
 description: >-
   Ghost is an open-source publishing platform designed for professional publishers,
   with native subscription, membership, and newsletter features for content creators.
+maintainers:
+  - FN: API Evangelist
+    email: info@apievangelist.com

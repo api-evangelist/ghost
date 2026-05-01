@@ -16,7 +16,7 @@ Ghost is an open-source, professional publishing platform built on Node.js that 
 ## Timestamps
 
 - **Created:** 2025-03-01
-- **Modified:** 2026-03-20
+- **Modified:** 2026-04-28
 
 ## APIs
 
