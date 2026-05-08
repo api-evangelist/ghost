@@ -3,53 +3,33 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Ghost
 providerId: ghost
-created: '2026-05-04'
-modified: '2026-05-05'
+created: '2026-05-08'
+modified: '2026-05-08'
 reconciled: false
 tags:
-  - Rate Limiting
-  - Content Management
-  - Publishing
-  - Headless CMS
-description: Ghost does not publish per-second / per-minute API rate limits for the Content or Admin APIs
-  on its public documentation. Self-hosted instances inherit the operator's reverse-proxy limits; Ghost(Pro)
-  applies platform-level abuse protection rather than tier-specific quotas. Members API endpoints (e.g.
-  send-magic-link) are rate limited via a brute-force middleware. Consumers should implement exponential
-  backoff and respect 429 responses.
+- Publishing
+- Newsletter
+- CMS
+- Open Source
+- Membership
+- Rate Limiting
+- Quotas
+- Throttling
+description: Placeholder rate-limit artifact for Ghost. Replace with real limits once researched.
+notes: Initial scaffold — limits have not yet been reconciled.
 sources:
-  - https://ghost.org/docs/content-api/
-  - https://ghost.org/docs/admin-api/
+- https://ghost.org/
 responseCodes:
   throttled: 429
-  serviceUnavailable: 503
 limits:
-  - name: Content API requests
-    scope: api-key
-    metric: requests_per_minute
-    limit: see Ghost(Pro) operator policy / self-hosted reverse-proxy config
-    notes: Ghost does not publish a documented per-second limit. Brute-force middleware throttles auth-related
-      endpoints separately.
-  - name: Admin API requests
-    scope: api-key
-    metric: requests_per_minute
-    limit: see Ghost(Pro) operator policy / self-hosted reverse-proxy config
-    notes: Same as Content API. Self-hosted operators commonly add nginx/Cloudflare-level throttling.
-  - name: Members API authentication endpoints
-    scope: IP
-    metric: requests_per_hour
-    limit: brute-force protected (see Ghost source)
-    notes: Magic-link sends, member sign-ins, and password resets are protected by the brute middleware
-      with short-window IP throttling.
+- name: Default
+  scope: account
+  metric: varies
+  limit: see provider documentation
+  notes: Pending reconciliation.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter on 429 responses; Ghost does
-      not document a Retry-After value.
-  - name: Self-hosted vs Ghost(Pro)
-    description: Self-hosted deployments inherit limits from the operator's reverse proxy / WAF. Ghost(Pro)
-      applies platform-wide abuse protection but does not publish per-tier numeric limits.
-  - name: Auth endpoint protection
-    description: Members and admin auth endpoints (sign-in, magic link) are protected by brute-force middleware
-      separate from general API throttling.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

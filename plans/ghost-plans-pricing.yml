@@ -3,150 +3,39 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Ghost
 providerId: ghost
-created: '2026-05-04'
-modified: '2026-05-05'
-reconciled: true
+created: '2026-05-08'
+modified: '2026-05-08'
+reconciled: false
 tags:
-  - Content Management
-  - Publishing
-  - Headless CMS
-  - Newsletters
-  - Memberships
-description: Ghost(Pro) is the official managed hosting tier for the Ghost open-source publishing platform.
-  Pricing is tier-based on staff seats, included members, file upload size, and number of newsletters.
-  The Content and Admin APIs are available on the Publisher tier and above. Rate limits are enforced at
-  the platform level rather than as per-plan API entries.
+- Publishing
+- Newsletter
+- CMS
+- Open Source
+- Membership
+- Plans
+description: Placeholder plans/pricing artifact for Ghost. Replace with real published pricing once
+  the pipeline researches the provider's plans page.
+notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
 sources:
-  - https://ghost.org/pricing/
+- https://ghost.org/
 plans:
-  - id: ghost-starter
-    name: Starter
-    type: subscription
-    description: Entry Ghost(Pro) tier — 1 staff user, 1,000 members, 1 newsletter, 5MB upload limit. Yearly
-      billing.
-    entries:
-      - label: Monthly subscription (yearly billing)
-        name: starter_monthly
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '18.00'
-        userMultiplied: false
-      - label: Included members
-        name: members
-        type: quota
-        metric: members
-        limit: 1000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: included
-        userMultiplied: false
-    elements:
-      - name: 1 staff user
-      - name: 1 newsletter
-      - name: 5MB file upload limit
-      - name: Custom domain
-      - name: Built-in SEO and analytics
-  - id: ghost-publisher
-    name: Publisher
-    type: subscription
-    description: Mid-tier Ghost(Pro) plan — 3 staff users, 1,000 members, 3 newsletters, 100MB upload limit.
-      Adds Content API and Admin API access. Yearly billing.
-    entries:
-      - label: Monthly subscription (yearly billing)
-        name: publisher_monthly
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '29.00'
-        userMultiplied: false
-      - label: Included members
-        name: members
-        type: quota
-        metric: members
-        limit: 1000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: included
-        userMultiplied: false
-    elements:
-      - name: 3 staff users
-      - name: 3 newsletters
-      - name: 100MB file upload limit
-      - name: Ghost Content API
-      - name: Ghost Admin API
-      - name: Custom integrations
-  - id: ghost-business
-    name: Business
-    type: subscription
-    description: High-tier Ghost(Pro) plan — 15 staff users, 10,000 members, 10 newsletters, 250MB upload
-      limit, 99.9% uptime SLA, priority support, up to 10 premium tiers. Yearly billing.
-    entries:
-      - label: Monthly subscription (yearly billing)
-        name: business_monthly
-        type: subscription
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '199.00'
-        userMultiplied: false
-      - label: Included members
-        name: members
-        type: quota
-        metric: members
-        limit: 10000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: included
-        userMultiplied: false
-    elements:
-      - name: 15 staff users
-      - name: 10 newsletters
-      - name: 250MB file upload limit
-      - name: 10 premium member tiers
-      - name: 99.9% uptime SLA
-      - name: Priority support
-      - name: Ghost Content API
-      - name: Ghost Admin API
-      - name: Ghost Webhooks
-  - id: ghost-custom
-    name: Custom (Enterprise)
-    type: enterprise
-    description: Negotiated tier with unlimited staff, members, newsletters, and 1GB upload limit. Includes
-      contractual SLA and dedicated support.
-    entries:
-      - label: Custom contract
-        name: custom_contract
-        type: subscription
-        metric: contract
-        limit: -1
-        timeFrame: year
-        geo: global
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited staff users
-      - name: Unlimited members
-      - name: Unlimited newsletters
-      - name: Unlimited premium member tiers
-      - name: 1GB file upload limit
-      - name: Dedicated technical account management
-      - name: Custom integrations
-      - name: Ghost Admin API
-      - name: Ghost Content API
-      - name: Ghost Webhooks
+- id: ghost-default
+  name: To Be Reconciled
+  type: enterprise
+  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+  entries:
+  - label: API Access
+    name: api_access
+    type: flat
+    metric: varies
+    limit: -1
+    timeFrame: usage
+    geo: global
+    unit: 1
+    price: see https://ghost.org/
+    userMultiplied: false
+  elements:
+  - name: Pending Reconciliation
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

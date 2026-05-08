@@ -3,89 +3,64 @@ specificationVersion: '1.0'
 schema: https://www.finops.org/framework/
 provider: Ghost
 providerId: ghost
-created: '2026-05-04'
-modified: '2026-05-05'
-reconciled: true
+created: '2026-05-08'
+modified: '2026-05-08'
+reconciled: false
 tags:
-  - FinOps
-  - FOCUS
-  - Content Management
-  - Publishing
-  - SaaS
-description: 'FOCUS-aligned FinOps for Ghost(Pro): tiered SaaS subscription priced on staff seats, included
-  members, and feature access; no per-API-call billing.'
+- Publishing
+- Newsletter
+- CMS
+- Open Source
+- Membership
+- FinOps
+- Cost Management
+- FOCUS
+description: FOCUS-aligned FinOps placeholder for Ghost. Pipeline will replace with real billing details.
+notes: Initial scaffold — billing model has not yet been reconciled.
 sources:
-  - https://ghost.org/pricing/
-  - https://ghost.org/docs/
+- https://ghost.org/
+- https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-publisherName: Ghost Foundation
-serviceCategory: Content Management / Publishing
+publisherName: Ghost
+serviceCategory: Publishing
 billingModel:
-  pricingCategory: Tiered Subscription
+  pricingCategory: To Be Reconciled
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-    - Purchase
-    - Usage
-    - Adjustment
-    - Credit
+  - Usage
+  - Purchase
+  - Adjustment
 focusColumns:
-  ServiceName: Ghost(Pro)
-  ServiceCategory: Content Management
+  ServiceName: Ghost
+  ServiceCategory: Publishing
   ProviderName: Ghost
-  PublisherName: Ghost Foundation
-  InvoiceIssuerName: Ghost Foundation
+  PublisherName: Ghost
+  InvoiceIssuerName: Ghost
   BillingCurrency: USD
-  ChargeCategory: Purchase
-  PricingCategory: Subscription
-  PricingUnit: month
+  ChargeCategory: Usage
 meters:
-  - name: subscription_fees
-    description: Monthly Ghost(Pro) plan fee charged per blog/site
-    unit: month
-    aggregation: sum
-    dimensions:
-      - plan
-      - site_id
-  - name: staff_seats
-    description: Number of staff users included on the plan
-    unit: seat
-    aggregation: max
-    dimensions:
-      - plan
-  - name: members_included
-    description: Number of paid/free members the plan supports
-    unit: member
-    aggregation: max
-    dimensions:
-      - plan
-  - name: newsletters
-    description: Number of newsletters configured under the plan
-    unit: newsletter
-    aggregation: max
-  - name: file_storage
-    description: Cumulative file uploads bound by the per-file size cap of the plan
-    unit: GB
-    aggregation: sum
+- name: api_usage
+  description: Catch-all meter pending reconciliation.
+  unit: varies
+  aggregation: sum
+  dimensions:
+  - account
+  - resource
 principles:
-  - name: Visibility
-    description: Track Ghost(Pro) invoices via the billing email and admin Settings - Subscription pages;
-      surface seat counts and active member totals through the Admin API for finance reporting.
-  - name: Allocation
-    description: Tag site-level subscriptions to the owning content team; multi-property publishers should
-      attribute each Ghost(Pro) instance to its content unit.
-  - name: Optimization
-    description: Annual billing offers material discount over monthly; consolidate low-traffic sites onto
-      a single Creator/Team plan rather than maintaining multiple Starters; archive inactive members to
-      stay within tier caps.
-  - name: Accountability
-    description: Editorial leads own the Ghost(Pro) seat allocation and member-tier expansion decisions;
-      finance reviews annual renewal vs self-host trade-off.
+- name: Visibility
+  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+- name: Allocation
+  description: Tag invoice line items to consuming business units in your FinOps store.
+- name: Optimization
+  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+- name: Accountability
+  description: Assign a contract owner to review billing against negotiated terms.
 maintainers:
-  - FN: API Evangelist
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
