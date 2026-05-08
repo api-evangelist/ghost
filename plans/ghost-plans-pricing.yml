@@ -5,37 +5,148 @@ provider: Ghost
 providerId: ghost
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Publishing
-- Newsletter
-- CMS
+- Newsletters
+- Memberships
 - Open Source
-- Membership
 - Plans
-description: Placeholder plans/pricing artifact for Ghost. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled against the provider's documentation.
+description: Ghost(Pro) hosted pricing tiers; the underlying Ghost software is free and open source (MIT).
+notes: >-
+  Ghost is open-source software (MIT licensed) and can be self-hosted at zero
+  software-license cost. Ghost(Pro) is the official managed hosting offering with the
+  tiers below (annual billing prices shown).
 sources:
-- https://ghost.org/
+- https://ghost.org/pricing/
+- https://github.com/TryGhost/Ghost
 plans:
-- id: ghost-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: ghost-self-hosted
+  name: Self-Hosted (Open Source)
+  type: opensource
+  description: Run Ghost on your own infrastructure under the MIT license.
   entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
+  - label: License
+    name: license
+    type: included
+    metric: license
     limit: -1
-    timeFrame: usage
+    timeFrame: perpetual
     geo: global
     unit: 1
-    price: see https://ghost.org/
+    price: 0
     userMultiplied: false
   elements:
-  - name: Pending Reconciliation
+  - name: Full Admin and Content APIs
+  - name: Webhooks, integrations, themes
+  - name: Self-managed hosting and updates
+- id: ghost-starter
+  name: Starter
+  type: paid
+  description: Entry-level Ghost(Pro) hosted plan.
+  entries:
+  - label: Plan Fee
+    name: plan_fee
+    type: flat
+    metric: month
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 18
+    currency: USD
+    userMultiplied: false
+  - label: Members
+    name: members
+    type: tiered
+    metric: members
+    limit: 1000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    userMultiplied: false
+  elements:
+  - name: 1 staff user
+  - name: 5MB file uploads
+  - name: Custom domain, newsletters
+- id: ghost-publisher
+  name: Publisher
+  type: paid
+  description: Mid-tier Ghost(Pro) plan.
+  entries:
+  - label: Plan Fee
+    name: plan_fee
+    type: flat
+    metric: month
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 29
+    currency: USD
+    userMultiplied: false
+  - label: Members
+    name: members
+    type: tiered
+    metric: members
+    limit: 1000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    userMultiplied: false
+  elements:
+  - name: 3 staff users
+  - name: Custom themes and 8,000+ integrations
+  - name: 100MB uploads
+  - name: Custom email sending domain
+- id: ghost-business
+  name: Business
+  type: paid
+  description: Business plan for larger publishers.
+  entries:
+  - label: Plan Fee
+    name: plan_fee
+    type: flat
+    metric: month
+    limit: 1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: 199
+    currency: USD
+    userMultiplied: false
+  - label: Members
+    name: members
+    type: tiered
+    metric: members
+    limit: 10000
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    userMultiplied: false
+  elements:
+  - name: 15 staff users
+  - name: Priority support
+  - name: 250MB uploads
+- id: ghost-custom
+  name: Custom (Enterprise)
+  type: enterprise
+  description: Enterprise tier with SLA, SSO, dedicated IP.
+  entries:
+  - label: Plan Fee
+    name: plan_fee
+    type: custom
+    metric: month
+    limit: -1
+    timeFrame: monthly
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Unlimited staff users and members
+  - name: Dedicated IP, 99.9% uptime SLA
+  - name: SSO and dedicated support
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

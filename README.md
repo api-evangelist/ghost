@@ -1,6 +1,6 @@
 # Ghost (ghost)
 
-Ghost is an open-source publishing platform with built-in newsletters, paid memberships, and content APIs. Hosted by Ghost(Pro) or self-hosted.
+Ghost is an open-source publishing platform with hosted (Ghost(Pro)) and self-hosted options. It exposes a write-capable Admin API and a read-only Content API plus webhooks.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml)
 
@@ -9,8 +9,12 @@ Ghost is an open-source publishing platform with built-in newsletters, paid memb
 ## Type
 - **x-type:** company
 
-## Tags:
- - Publishing, Newsletter, CMS, Open Source, Membership
+## APIs
+- **Ghost Admin API** — Full read/write at `https://{admin_domain}/ghost/api/admin`. JWT (5-min) from admin API key, staff tokens, or session. Posts, pages, tags, tiers, newsletters, offers, members, users, images, themes, webhooks. Docs: https://docs.ghost.org/admin-api
+- **Ghost Content API** — Read-only at `https://{admin_domain}/ghost/api/content`. Query-param Content API key; cacheable. Posts, pages, tags, authors, tiers, settings. Docs: https://docs.ghost.org/content-api
+
+## Tags
+- Publishing, Newsletters, Memberships, Content, Open Source
 
 ## Timestamps
 - **Created:** 2026-05-08
@@ -18,9 +22,12 @@ Ghost is an open-source publishing platform with built-in newsletters, paid memb
 
 ## Common Properties
 - [Website](https://ghost.org/)
-- [Plans](plans/ghost-plans-pricing.yml) — placeholder, pipeline reconciles later
-- [RateLimits](rate-limits/ghost-rate-limits.yml) — placeholder
-- [FinOps](finops/ghost-finops.yml) — FOCUS-aligned placeholder
+- [Developer Portal](https://docs.ghost.org/)
+- [Source Code (MIT)](https://github.com/TryGhost/Ghost)
+- [Pricing](https://ghost.org/pricing/)
+- [Plans](plans/ghost-plans-pricing.yml) — reconciled (Self-hosted FOSS, Starter $18, Publisher $29, Business $199, Custom)
+- [RateLimits](rate-limits/ghost-rate-limits.yml) — partial (Content API cacheable, Admin JWT 5-min, no published throttle)
+- [FinOps](finops/ghost-finops.yml) — FOCUS-aligned, reconciled
 
 ## Maintainers
 **FN:** Kin Lane

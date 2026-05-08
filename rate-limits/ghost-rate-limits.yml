@@ -5,31 +5,46 @@ provider: Ghost
 providerId: ghost
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: partial
 tags:
 - Publishing
-- Newsletter
-- CMS
 - Open Source
-- Membership
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Ghost. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: Rate limits depend on the deployment model — Ghost(Pro) hosted vs. self-hosted.
+notes: >-
+  The Content API is fully cacheable and effectively rate-limit-free at origin. The
+  Admin API JWTs expire after 5 minutes (a security limit, not a throttle). Ghost(Pro)
+  may apply infrastructure-level abuse protection but does not publish a per-account
+  request quota in the public docs. Self-hosted Ghost is bound only by the limits of
+  the host server and any reverse proxy in front of it.
 sources:
-- https://ghost.org/
+- https://docs.ghost.org/admin-api
+- https://docs.ghost.org/content-api
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Content API requests
+  scope: site
+  metric: requests
+  limit: cacheable_no_published_throttle
+  notes: Read-only Content API is intended to be fully cacheable.
+- name: Admin API JWT lifetime
+  scope: token
+  metric: seconds
+  limit: 300
+  notes: JWTs derived from the admin API key expire after 5 minutes.
+- name: Self-hosted limits
+  scope: deployment
+  metric: requests
+  limit: deployment_dependent
+  notes: Bounded by the operator's web server / reverse proxy configuration.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor Retry-After when present and apply exponential backoff with jitter.
+- name: Cache Aggressively
+  description: Front the Content API with a CDN; responses are cache-friendly.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

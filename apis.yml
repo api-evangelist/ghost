@@ -3,21 +3,79 @@ url: https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis
 name: Ghost
 x-type: company
 description: >-
-  Ghost is an open-source publishing platform with built-in newsletters, paid memberships, and content APIs. Hosted by Ghost(Pro) or self-hosted.
+  Ghost is an open-source publishing platform with hosted (Ghost(Pro)) and self-hosted
+  options. It exposes a write-capable Admin API and a read-only Content API plus webhooks.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Publishing
-  - Newsletter
-  - CMS
+  - Newsletters
+  - Memberships
+  - Content
   - Open Source
-  - Membership
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: ghost:ghost-admin-api
+    name: Ghost Admin API
+    humanURL: https://docs.ghost.org/admin-api
+    baseURL: https://{admin_domain}/ghost/api/admin
+    tags:
+      - Publishing
+      - Content Management
+      - Members
+      - Newsletters
+      - Webhooks
+    description: >-
+      The Ghost Admin API provides full read/write access to posts, pages, tags, tiers,
+      newsletters, offers, members, users, images, themes, webhooks, and site
+      configuration. Authentication uses short-lived JWTs derived from an admin API key,
+      staff access tokens, or session cookies. Requests must include an Accept-Version
+      header.
+    properties:
+      - type: Documentation
+        url: https://docs.ghost.org/admin-api
+      - type: Authentication
+        url: https://docs.ghost.org/admin-api#token-authentication
+      - type: Webhooks
+        url: https://docs.ghost.org/webhooks
+      - type: SDK
+        title: Ghost Admin Node SDK
+        url: https://github.com/TryGhost/SDK/tree/main/packages/admin-api
+  - aid: ghost:ghost-content-api
+    name: Ghost Content API
+    humanURL: https://docs.ghost.org/content-api
+    baseURL: https://{admin_domain}/ghost/api/content
+    tags:
+      - Publishing
+      - Content
+      - Read Only
+      - Public
+    description: >-
+      The Ghost Content API is a read-only RESTful API for delivering published content
+      (posts, pages, tags, authors, tiers, settings) to clients. It uses query-parameter
+      Content API keys, is fully cacheable, and is intended to be safe for browser use.
+    properties:
+      - type: Documentation
+        url: https://docs.ghost.org/content-api
+      - type: Authentication
+        url: https://docs.ghost.org/content-api#key
+      - type: SDK
+        title: Ghost Content Node SDK
+        url: https://github.com/TryGhost/SDK/tree/main/packages/content-api
 common:
   - type: Website
     url: https://ghost.org/
+  - type: Portal
+    url: https://docs.ghost.org/
+  - type: GitHubOrganization
+    url: https://github.com/TryGhost
+  - type: SourceCode
+    url: https://github.com/TryGhost/Ghost
+  - type: Forums
+    url: https://forum.ghost.org/
+  - type: Pricing
+    url: https://ghost.org/pricing/
   - type: Plans
     url: plans/ghost-plans-pricing.yml
   - type: RateLimits
