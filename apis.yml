@@ -82,6 +82,109 @@ common:
     url: rate-limits/ghost-rate-limits.yml
   - type: FinOps
     url: finops/ghost-finops.yml
+  - type: Integrations
+    url: https://ghost.org/integrations
+integrations:
+  - name: Tinybird
+  - name: Instagram
+  - name: Zapier
+  - name: Plausible
+  - name: Google Analytics
+  - name: Custom
+  - name: Netlify
+  - name: YouTube
+  - name: Twitter / X
+  - name: GitHub
+  - name: Senja
+  - name: Tally
+  - name: ChartMogul
+  - name: Churnbuster
+  - name: Carrd
+  - name: Mailchimp
+  - name: FirstPromoter
+  - name: Stripe
+  - name: Shopify
+  - name: Disqus
+  - name: Typeform
+  - name: Patreon
+  - name: Discourse
+  - name: Discord
+  - name: Ulysses
+  - name: Cove Comments
+  - name: Slack
+  - name: iA Writer
+  - name: CookieYes
+  - name: ConvertKit
+  - name: Transistor
+  - name: Raycast
+  - name: Search Console
+  - name: Captivate
+  - name: Help Scout
+  - name: SoundCloud
+  - name: Vimeo
+  - name: Spotify
+  - name: Buffer
+  - name: CodePen
+  - name: Loom
+  - name: Google Drive
+  - name: Google AdSense
+  - name: Azure Storage
+  - name: LiveChat
+  - name: Imgur
+  - name: Google Cloud
+  - name: Backblaze
+  - name: Circle
+  - name: Giphy
+  - name: Intercom
+  - name: SlideShare
+  - name: Segment
+  - name: Listen Notes
+  - name: Twitch
+  - name: Unsplash
+  - name: Viral Loops
+  - name: Hubspot
+  - name: Google Forms
+  - name: Airtable
+  - name: Amplitude
+  - name: PayPal
+  - name: Fullres
+  - name: Drip
+  - name: Wufoo
+  - name: 'Let''s Encrypt'
+  - name: Pipedream
+  - name: Geckoboard
+  - name: Pinterest
+  - name: Transifex
+  - name: Custom RSS
+  - name: SurveyMonkey
+  - name: Setka Editor
+  - name: Facebook
+  - name: Mailerlite
+  - name: Placid
+  - name: Ghost Bookmarker
+  - name: Cloudinary
+  - name: Amazon S3
+  - name: EmailOctopus
+  - name: Gumroad
+  - name: ActiveCampaign
+  - name: Snipcart
+  - name: Simple Analytics
+  - name: Gmail
+  - name: GatherContent
+  - name: Write.as
+  - name: Talkyard
+  - name: X-Cart
+  - name: Weglot
+  - name: Buttondown
+  - name: Trello
+  - name: Feedly
+  - name: Matomo
+  - name: Fathom Analytics
+  - name: BigCommerce
+  - name: Jotform
+  - name: BeyondWords
+  - name: Formspree
+  - name: VWO
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
