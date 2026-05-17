@@ -1,7 +1,7 @@
 aid: ghost
 url: https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml
 name: Ghost
-x-type: company
+kind: company
 description: >-
   Ghost is an open-source publishing platform with hosted (Ghost(Pro)) and self-hosted
   options. It exposes a write-capable Admin API and a read-only Content API plus webhooks.
