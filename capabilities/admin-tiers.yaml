@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ghost Admin API — Tiers
+  description: 'Ghost Admin API — Tiers. 4 operations. Lead operation: Browse tiers. Self-contained Naftiko capability covering
+    one Ghost business surface.'
+  tags:
+  - Ghost
+  - Tiers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GHOST_API_KEY: GHOST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-tiers
+    baseUri: https://{site}.ghost.io/ghost/api/admin
+    description: Ghost Admin API — Tiers business capability. Self-contained, no shared references.
+    resources:
+    - name: tiers
+      path: /tiers/
+      operations:
+      - name: adminbrowsetiers
+        method: GET
+        description: Browse tiers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: admincreatetier
+        method: POST
+        description: Create a tier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: tiers-id
+      path: /tiers/{id}/
+      operations:
+      - name: adminreadtier
+        method: GET
+        description: Read a tier by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: adminupdatetier
+        method: PUT
+        description: Update a tier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GHOST_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-tiers-rest
+    port: 8080
+    description: REST adapter for Ghost Admin API — Tiers. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tiers
+      name: tiers
+      description: REST surface for tiers.
+      operations:
+      - method: GET
+        name: adminbrowsetiers
+        description: Browse tiers
+        call: admin-tiers.adminbrowsetiers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: admincreatetier
+        description: Create a tier
+        call: admin-tiers.admincreatetier
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tiers/{id}
+      name: tiers-id
+      description: REST surface for tiers-id.
+      operations:
+      - method: GET
+        name: adminreadtier
+        description: Read a tier by ID
+        call: admin-tiers.adminreadtier
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: adminupdatetier
+        description: Update a tier
+        call: admin-tiers.adminupdatetier
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-tiers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ghost Admin API — Tiers. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: browse-tiers
+      description: Browse tiers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-tiers.adminbrowsetiers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-tier
+      description: Create a tier
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-tiers.admincreatetier
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-tier-id
+      description: Read a tier by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-tiers.adminreadtier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-tier
+      description: Update a tier
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-tiers.adminupdatetier
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

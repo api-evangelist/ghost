@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ghost Content API — Pages
+  description: 'Ghost Content API — Pages. 3 operations. Lead operation: Browse pages. Self-contained Naftiko capability covering
+    one Ghost business surface.'
+  tags:
+  - Ghost
+  - Pages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GHOST_API_KEY: GHOST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: content-pages
+    baseUri: https://{site}.ghost.io/ghost/api/content
+    description: Ghost Content API — Pages business capability. Self-contained, no shared references.
+    resources:
+    - name: pages
+      path: /pages/
+      operations:
+      - name: browsepages
+        method: GET
+        description: Browse pages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pages-slug-slug
+      path: /pages/slug/{slug}/
+      operations:
+      - name: readpagebyslug
+        method: GET
+        description: Read a page by slug
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: pages-id
+      path: /pages/{id}/
+      operations:
+      - name: readpagebyid
+        method: GET
+        description: Read a page by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: key
+      value: '{{env.GHOST_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: content-pages-rest
+    port: 8080
+    description: REST adapter for Ghost Content API — Pages. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/pages
+      name: pages
+      description: REST surface for pages.
+      operations:
+      - method: GET
+        name: browsepages
+        description: Browse pages
+        call: content-pages.browsepages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/slug/{slug}
+      name: pages-slug-slug
+      description: REST surface for pages-slug-slug.
+      operations:
+      - method: GET
+        name: readpagebyslug
+        description: Read a page by slug
+        call: content-pages.readpagebyslug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/pages/{id}
+      name: pages-id
+      description: REST surface for pages-id.
+      operations:
+      - method: GET
+        name: readpagebyid
+        description: Read a page by ID
+        call: content-pages.readpagebyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: content-pages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ghost Content API — Pages. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: browse-pages
+      description: Browse pages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-pages.browsepages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-page-slug
+      description: Read a page by slug
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-pages.readpagebyslug
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-page-id
+      description: Read a page by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-pages.readpagebyid
+      outputParameters:
+      - type: object
+        mapping: $.

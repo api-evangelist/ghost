@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ghost Admin API — Members
+  description: 'Ghost Admin API — Members. 5 operations. Lead operation: Browse members. Self-contained Naftiko capability
+    covering one Ghost business surface.'
+  tags:
+  - Ghost
+  - Members
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GHOST_API_KEY: GHOST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-members
+    baseUri: https://{site}.ghost.io/ghost/api/admin
+    description: Ghost Admin API — Members business capability. Self-contained, no shared references.
+    resources:
+    - name: members
+      path: /members/
+      operations:
+      - name: adminbrowsemembers
+        method: GET
+        description: Browse members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: admincreatemember
+        method: POST
+        description: Create a member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: members-id
+      path: /members/{id}/
+      operations:
+      - name: adminreadmember
+        method: GET
+        description: Read a member by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: adminupdatemember
+        method: PUT
+        description: Update a member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: admindeletemember
+        method: DELETE
+        description: Delete a member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.GHOST_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-members-rest
+    port: 8080
+    description: REST adapter for Ghost Admin API — Members. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/members
+      name: members
+      description: REST surface for members.
+      operations:
+      - method: GET
+        name: adminbrowsemembers
+        description: Browse members
+        call: admin-members.adminbrowsemembers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: admincreatemember
+        description: Create a member
+        call: admin-members.admincreatemember
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/members/{id}
+      name: members-id
+      description: REST surface for members-id.
+      operations:
+      - method: GET
+        name: adminreadmember
+        description: Read a member by ID
+        call: admin-members.adminreadmember
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: adminupdatemember
+        description: Update a member
+        call: admin-members.adminupdatemember
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: admindeletemember
+        description: Delete a member
+        call: admin-members.admindeletemember
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-members-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ghost Admin API — Members. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: browse-members
+      description: Browse members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-members.adminbrowsemembers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-member
+      description: Create a member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-members.admincreatemember
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-member-id
+      description: Read a member by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-members.adminreadmember
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-member
+      description: Update a member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-members.adminupdatemember
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-member
+      description: Delete a member
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: admin-members.admindeletemember
+      outputParameters:
+      - type: object
+        mapping: $.

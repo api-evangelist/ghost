@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ghost Admin API — Themes
+  description: 'Ghost Admin API — Themes. 2 operations. Lead operation: Upload a theme. Self-contained Naftiko capability
+    covering one Ghost business surface.'
+  tags:
+  - Ghost
+  - Themes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GHOST_API_KEY: GHOST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-themes
+    baseUri: https://{site}.ghost.io/ghost/api/admin
+    description: Ghost Admin API — Themes business capability. Self-contained, no shared references.
+    resources:
+    - name: themes-upload
+      path: /themes/upload/
+      operations:
+      - name: adminuploadtheme
+        method: POST
+        description: Upload a theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: themes-name-activate
+      path: /themes/{name}/activate/
+      operations:
+      - name: adminactivatetheme
+        method: PUT
+        description: Activate a theme
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the theme to activate
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GHOST_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-themes-rest
+    port: 8080
+    description: REST adapter for Ghost Admin API — Themes. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/themes/upload
+      name: themes-upload
+      description: REST surface for themes-upload.
+      operations:
+      - method: POST
+        name: adminuploadtheme
+        description: Upload a theme
+        call: admin-themes.adminuploadtheme
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/themes/{name}/activate
+      name: themes-name-activate
+      description: REST surface for themes-name-activate.
+      operations:
+      - method: PUT
+        name: adminactivatetheme
+        description: Activate a theme
+        call: admin-themes.adminactivatetheme
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-themes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ghost Admin API — Themes. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: upload-theme
+      description: Upload a theme
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-themes.adminuploadtheme
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: activate-theme
+      description: Activate a theme
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: admin-themes.adminactivatetheme
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

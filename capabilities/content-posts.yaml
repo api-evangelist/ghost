@@ -1,0 +1,136 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Ghost Content API — Posts
+  description: 'Ghost Content API — Posts. 3 operations. Lead operation: Browse posts. Self-contained Naftiko capability covering
+    one Ghost business surface.'
+  tags:
+  - Ghost
+  - Posts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GHOST_API_KEY: GHOST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: content-posts
+    baseUri: https://{site}.ghost.io/ghost/api/content
+    description: Ghost Content API — Posts business capability. Self-contained, no shared references.
+    resources:
+    - name: posts
+      path: /posts/
+      operations:
+      - name: browseposts
+        method: GET
+        description: Browse posts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: posts-slug-slug
+      path: /posts/slug/{slug}/
+      operations:
+      - name: readpostbyslug
+        method: GET
+        description: Read a post by slug
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: posts-id
+      path: /posts/{id}/
+      operations:
+      - name: readpostbyid
+        method: GET
+        description: Read a post by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: key
+      value: '{{env.GHOST_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: content-posts-rest
+    port: 8080
+    description: REST adapter for Ghost Content API — Posts. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/posts
+      name: posts
+      description: REST surface for posts.
+      operations:
+      - method: GET
+        name: browseposts
+        description: Browse posts
+        call: content-posts.browseposts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/posts/slug/{slug}
+      name: posts-slug-slug
+      description: REST surface for posts-slug-slug.
+      operations:
+      - method: GET
+        name: readpostbyslug
+        description: Read a post by slug
+        call: content-posts.readpostbyslug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/posts/{id}
+      name: posts-id
+      description: REST surface for posts-id.
+      operations:
+      - method: GET
+        name: readpostbyid
+        description: Read a post by ID
+        call: content-posts.readpostbyid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: content-posts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Ghost Content API — Posts. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: browse-posts
+      description: Browse posts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-posts.browseposts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-post-slug
+      description: Read a post by slug
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-posts.readpostbyslug
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-post-id
+      description: Read a post by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: content-posts.readpostbyid
+      outputParameters:
+      - type: object
+        mapping: $.
