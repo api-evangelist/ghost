@@ -117,6 +117,8 @@ common:
   url: finops/ghost-finops.yml
 - type: Integrations
   url: https://ghost.org/integrations
+- type: LLMsTxt
+  url: https://docs.ghost.org/llms.txt
 integrations:
 - name: Tinybird
 - name: Instagram
