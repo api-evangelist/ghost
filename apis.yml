@@ -2,191 +2,193 @@ aid: ghost
 url: https://raw.githubusercontent.com/api-evangelist/ghost/refs/heads/main/apis.yml
 name: Ghost
 kind: company
-description: >-
-  Ghost is an open-source publishing platform with hosted (Ghost(Pro)) and self-hosted options. It exposes a
-  write-capable Admin API and a read-only Content API plus webhooks.
+description: Ghost is an open-source publishing platform with hosted (Ghost(Pro))
+  and self-hosted options. It exposes a write-capable Admin API and a read-only Content
+  API plus webhooks.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Publishing
-  - Newsletters
-  - Memberships
-  - Content
-  - Open Source
+- Publishing
+- Newsletters
+- Memberships
+- Content
+- Open Source
 created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: ghost:ghost-admin-api
-    name: Ghost Admin API
-    humanURL: https://docs.ghost.org/admin-api
-    baseURL: https://{admin_domain}/ghost/api/admin
-    tags:
-      - Publishing
-      - Content Management
-      - Members
-      - Newsletters
-      - Webhooks
-    description: >-
-      The Ghost Admin API provides full read/write access to posts, pages, tags, tiers, newsletters, offers, members,
-      users, images, themes, webhooks, and site configuration. Authentication uses short-lived JWTs derived from an
-      admin API key, staff access tokens, or session cookies. Requests must include an Accept-Version header.
-    properties:
-      - type: Documentation
-        url: https://docs.ghost.org/admin-api
-      - type: Authentication
-        url: https://docs.ghost.org/admin-api#token-authentication
-      - type: Webhooks
-        url: https://docs.ghost.org/webhooks
-      - type: SDK
-        title: Ghost Admin Node SDK
-        url: https://github.com/TryGhost/SDK/tree/main/packages/admin-api
-  - aid: ghost:ghost-content-api
-    name: Ghost Content API
-    humanURL: https://docs.ghost.org/content-api
-    baseURL: https://{admin_domain}/ghost/api/content
-    tags:
-      - Publishing
-      - Content
-      - Read Only
-      - Public
-    description: >-
-      The Ghost Content API is a read-only RESTful API for delivering published content (posts, pages, tags, authors,
-      tiers, settings) to clients. It uses query-parameter Content API keys, is fully cacheable, and is intended to be
-      safe for browser use.
-    properties:
-      - type: Documentation
-        url: https://docs.ghost.org/content-api
-      - type: Authentication
-        url: https://docs.ghost.org/content-api#key
-      - type: SDK
-        title: Ghost Content Node SDK
-        url: https://github.com/TryGhost/SDK/tree/main/packages/content-api
+- aid: ghost:ghost-admin-api
+  name: Ghost Admin API
+  humanURL: https://docs.ghost.org/admin-api
+  baseURL: https://{admin_domain}/ghost/api/admin
+  tags:
+  - Publishing
+  - Content Management
+  - Members
+  - Newsletters
+  - Webhooks
+  description: The Ghost Admin API provides full read/write access to posts, pages,
+    tags, tiers, newsletters, offers, members, users, images, themes, webhooks, and
+    site configuration. Authentication uses short-lived JWTs derived from an admin
+    API key, staff access tokens, or session cookies. Requests must include an Accept-Version
+    header.
+  properties:
+  - type: Documentation
+    url: https://docs.ghost.org/admin-api
+  - type: Authentication
+    url: https://docs.ghost.org/admin-api#token-authentication
+  - type: Webhooks
+    url: https://docs.ghost.org/webhooks
+  - type: SDK
+    title: Ghost Admin Node SDK
+    url: https://github.com/TryGhost/SDK/tree/main/packages/admin-api
+  - url: graphql/ghost-graphql.md
+    type: GraphQL
+- aid: ghost:ghost-content-api
+  name: Ghost Content API
+  humanURL: https://docs.ghost.org/content-api
+  baseURL: https://{admin_domain}/ghost/api/content
+  tags:
+  - Publishing
+  - Content
+  - Read Only
+  - Public
+  description: The Ghost Content API is a read-only RESTful API for delivering published
+    content (posts, pages, tags, authors, tiers, settings) to clients. It uses query-parameter
+    Content API keys, is fully cacheable, and is intended to be safe for browser use.
+  properties:
+  - type: Documentation
+    url: https://docs.ghost.org/content-api
+  - type: Authentication
+    url: https://docs.ghost.org/content-api#key
+  - type: SDK
+    title: Ghost Content Node SDK
+    url: https://github.com/TryGhost/SDK/tree/main/packages/content-api
 common:
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/ghost-foundation
-  - type: Website
-    url: https://ghost.org/
-  - type: Portal
-    url: https://docs.ghost.org/
-  - type: GitHubOrganization
-    url: https://github.com/TryGhost
-  - type: SourceCode
-    url: https://github.com/TryGhost/Ghost
-  - type: Forums
-    url: https://forum.ghost.org/
-  - type: Pricing
-    url: https://ghost.org/pricing/
-  - type: Plans
-    url: plans/ghost-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/ghost-rate-limits.yml
-  - type: FinOps
-    url: finops/ghost-finops.yml
-  - type: Integrations
-    url: https://ghost.org/integrations
-  - type: LLMsTxt
-    url: https://docs.ghost.org/llms.txt
+- type: LinkedIn
+  url: https://www.linkedin.com/company/ghost-foundation
+- type: Website
+  url: https://ghost.org/
+- type: Portal
+  url: https://docs.ghost.org/
+- type: GitHubOrganization
+  url: https://github.com/TryGhost
+- type: SourceCode
+  url: https://github.com/TryGhost/Ghost
+- type: Forums
+  url: https://forum.ghost.org/
+- type: Pricing
+  url: https://ghost.org/pricing/
+- type: Plans
+  url: plans/ghost-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/ghost-rate-limits.yml
+- type: FinOps
+  url: finops/ghost-finops.yml
+- type: Integrations
+  url: https://ghost.org/integrations
+- type: LLMsTxt
+  url: https://docs.ghost.org/llms.txt
 integrations:
-  - name: Tinybird
-  - name: Instagram
-  - name: Zapier
-  - name: Plausible
-  - name: Google Analytics
-  - name: Custom
-  - name: Netlify
-  - name: YouTube
-  - name: Twitter / X
-  - name: GitHub
-  - name: Senja
-  - name: Tally
-  - name: ChartMogul
-  - name: Churnbuster
-  - name: Carrd
-  - name: Mailchimp
-  - name: FirstPromoter
-  - name: Stripe
-  - name: Shopify
-  - name: Disqus
-  - name: Typeform
-  - name: Patreon
-  - name: Discourse
-  - name: Discord
-  - name: Ulysses
-  - name: Cove Comments
-  - name: Slack
-  - name: iA Writer
-  - name: CookieYes
-  - name: ConvertKit
-  - name: Transistor
-  - name: Raycast
-  - name: Search Console
-  - name: Captivate
-  - name: Help Scout
-  - name: SoundCloud
-  - name: Vimeo
-  - name: Spotify
-  - name: Buffer
-  - name: CodePen
-  - name: Loom
-  - name: Google Drive
-  - name: Google AdSense
-  - name: Azure Storage
-  - name: LiveChat
-  - name: Imgur
-  - name: Google Cloud
-  - name: Backblaze
-  - name: Circle
-  - name: Giphy
-  - name: Intercom
-  - name: SlideShare
-  - name: Segment
-  - name: Listen Notes
-  - name: Twitch
-  - name: Unsplash
-  - name: Viral Loops
-  - name: Hubspot
-  - name: Google Forms
-  - name: Airtable
-  - name: Amplitude
-  - name: PayPal
-  - name: Fullres
-  - name: Drip
-  - name: Wufoo
-  - name: Let's Encrypt
-  - name: Pipedream
-  - name: Geckoboard
-  - name: Pinterest
-  - name: Transifex
-  - name: Custom RSS
-  - name: SurveyMonkey
-  - name: Setka Editor
-  - name: Facebook
-  - name: Mailerlite
-  - name: Placid
-  - name: Ghost Bookmarker
-  - name: Cloudinary
-  - name: Amazon S3
-  - name: EmailOctopus
-  - name: Gumroad
-  - name: ActiveCampaign
-  - name: Snipcart
-  - name: Simple Analytics
-  - name: Gmail
-  - name: GatherContent
-  - name: Write.as
-  - name: Talkyard
-  - name: X-Cart
-  - name: Weglot
-  - name: Buttondown
-  - name: Trello
-  - name: Feedly
-  - name: Matomo
-  - name: Fathom Analytics
-  - name: BigCommerce
-  - name: Jotform
-  - name: BeyondWords
-  - name: Formspree
-  - name: VWO
+- name: Tinybird
+- name: Instagram
+- name: Zapier
+- name: Plausible
+- name: Google Analytics
+- name: Custom
+- name: Netlify
+- name: YouTube
+- name: Twitter / X
+- name: GitHub
+- name: Senja
+- name: Tally
+- name: ChartMogul
+- name: Churnbuster
+- name: Carrd
+- name: Mailchimp
+- name: FirstPromoter
+- name: Stripe
+- name: Shopify
+- name: Disqus
+- name: Typeform
+- name: Patreon
+- name: Discourse
+- name: Discord
+- name: Ulysses
+- name: Cove Comments
+- name: Slack
+- name: iA Writer
+- name: CookieYes
+- name: ConvertKit
+- name: Transistor
+- name: Raycast
+- name: Search Console
+- name: Captivate
+- name: Help Scout
+- name: SoundCloud
+- name: Vimeo
+- name: Spotify
+- name: Buffer
+- name: CodePen
+- name: Loom
+- name: Google Drive
+- name: Google AdSense
+- name: Azure Storage
+- name: LiveChat
+- name: Imgur
+- name: Google Cloud
+- name: Backblaze
+- name: Circle
+- name: Giphy
+- name: Intercom
+- name: SlideShare
+- name: Segment
+- name: Listen Notes
+- name: Twitch
+- name: Unsplash
+- name: Viral Loops
+- name: Hubspot
+- name: Google Forms
+- name: Airtable
+- name: Amplitude
+- name: PayPal
+- name: Fullres
+- name: Drip
+- name: Wufoo
+- name: Let's Encrypt
+- name: Pipedream
+- name: Geckoboard
+- name: Pinterest
+- name: Transifex
+- name: Custom RSS
+- name: SurveyMonkey
+- name: Setka Editor
+- name: Facebook
+- name: Mailerlite
+- name: Placid
+- name: Ghost Bookmarker
+- name: Cloudinary
+- name: Amazon S3
+- name: EmailOctopus
+- name: Gumroad
+- name: ActiveCampaign
+- name: Snipcart
+- name: Simple Analytics
+- name: Gmail
+- name: GatherContent
+- name: Write.as
+- name: Talkyard
+- name: X-Cart
+- name: Weglot
+- name: Buttondown
+- name: Trello
+- name: Feedly
+- name: Matomo
+- name: Fathom Analytics
+- name: BigCommerce
+- name: Jotform
+- name: BeyondWords
+- name: Formspree
+- name: VWO
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
