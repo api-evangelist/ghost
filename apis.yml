@@ -38,7 +38,7 @@ apis:
     url: https://docs.ghost.org/admin-api#token-authentication
   - type: Webhooks
     url: https://docs.ghost.org/webhooks
-  - type: SDK
+  - type: SDKs
     title: Ghost Admin Node SDK
     url: https://github.com/TryGhost/SDK/tree/main/packages/admin-api
   - url: graphql/ghost-graphql.md
@@ -60,7 +60,7 @@ apis:
     url: https://docs.ghost.org/content-api
   - type: Authentication
     url: https://docs.ghost.org/content-api#key
-  - type: SDK
+  - type: SDKs
     title: Ghost Content Node SDK
     url: https://github.com/TryGhost/SDK/tree/main/packages/content-api
 common:
@@ -86,7 +86,7 @@ common:
   url: finops/ghost-finops.yml
 - type: Integrations
   url: https://ghost.org/integrations
-- type: LLMsTxt
+- type: LlmsText
   url: https://docs.ghost.org/llms.txt
 integrations:
 - name: Tinybird
