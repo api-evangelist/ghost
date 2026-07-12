@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/ghost-admin-api-openapi.yml, openapi/ghost-content-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - query
+schemes:
+- name: adminApiToken
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: JSON Web Token generated from an Admin API key. The key is split into an ID and
+    secret at the colon separator. The ID is used as the kid header and the secret is used to
+    sign the token with HS256.
+  sources:
+  - openapi/ghost-admin-api-openapi.yml
+- name: contentApiKey
+  type: apiKey
+  in: query
+  parameter: key
+  description: Content API key obtained from a custom integration in Ghost Admin. Content API
+    keys are safe for use in browsers and other insecure environments as they only provide access
+    to public data.
+  sources:
+  - openapi/ghost-content-api-openapi.yml

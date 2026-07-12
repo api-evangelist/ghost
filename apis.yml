@@ -64,6 +64,10 @@ apis:
     title: Ghost Content Node SDK
     url: https://github.com/TryGhost/SDK/tree/main/packages/content-api
 common:
+- type: DomainSecurity
+  url: security/ghost-domain-security.yml
+- type: Authentication
+  url: authentication/ghost-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/ghost-foundation
 - type: Website
@@ -88,6 +92,8 @@ common:
   url: https://ghost.org/integrations
 - type: LlmsText
   url: https://docs.ghost.org/llms.txt
+- url: https://ghost.org/changelog/rss/
+  type: Blog
 integrations:
 - name: Tinybird
 - name: Instagram
