@@ -1,0 +1,40 @@
+{
+  "provider": "ghost",
+  "sources": [
+    "ghost-authors-api-openapi.yml",
+    "ghost-images-api-openapi.yml",
+    "ghost-members-api-openapi.yml",
+    "ghost-newsletters-api-openapi.yml",
+    "ghost-offers-api-openapi.yml",
+    "ghost-pages-api-openapi.yml",
+    "ghost-posts-api-openapi.yml",
+    "ghost-settings-api-openapi.yml",
+    "ghost-site-api-openapi.yml",
+    "ghost-tags-api-openapi.yml",
+    "ghost-themes-api-openapi.yml",
+    "ghost-tiers-api-openapi.yml",
+    "ghost-users-api-openapi.yml",
+    "ghost-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "ghost-authors-api-openapi.yml",
+    "ghost-images-api-openapi.yml",
+    "ghost-members-api-openapi.yml",
+    "ghost-newsletters-api-openapi.yml",
+    "ghost-offers-api-openapi.yml",
+    "ghost-pages-api-openapi.yml",
+    "ghost-posts-api-openapi.yml",
+    "ghost-settings-api-openapi.yml",
+    "ghost-site-api-openapi.yml",
+    "ghost-tags-api-openapi.yml",
+    "ghost-themes-api-openapi.yml",
+    "ghost-tiers-api-openapi.yml",
+    "ghost-users-api-openapi.yml",
+    "ghost-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
